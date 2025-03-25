@@ -6,7 +6,7 @@ import GameCardSkeletion from "./GameCardSkeletion";
 
 // Component only takes care of UI renders
 const GameGrid = () => {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   const skeletions = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
@@ -19,13 +19,13 @@ const GameGrid = () => {
       >
         {isLoading &&
           skeletions.map((s) => (
-            <GameCardContainer>
-              <GameCardSkeletion key={s} />
+            <GameCardContainer key={s}>
+              <GameCardSkeletion />
             </GameCardContainer>
           ))}
-        {games.map((g) => (
-          <GameCardContainer>
-            <GameCard key={g.id} game={g} />
+        {data.map((game) => (
+          <GameCardContainer key={game.id}>
+            <GameCard game={game} />
           </GameCardContainer>
         ))}
       </SimpleGrid>
