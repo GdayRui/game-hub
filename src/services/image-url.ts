@@ -1,4 +1,8 @@
 const getCroppedImageUrl = (url: string) => {
+  //TODO:
+  // some game doesn't have image
+  // fix it later properly
+  if (!url) return "";
   const target = "media/";
   const index = url.indexOf("media/");
   return (
