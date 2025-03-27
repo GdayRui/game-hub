@@ -11,8 +11,6 @@ export interface Genre {
   games_count: number;
 }
 
-// const useGenres = () => useData<Genre>("/genres");
-// const useGenres = () => ({ data: genres, isLoading: false, error: null });
 const useGenres = () =>
   useQuery({
     queryKey: ["genres"],
