@@ -24,9 +24,11 @@ const useGames = (gameQuery: GameQuery) =>
           parent_platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
+          page: gameQuery.page,
         },
       }),
     staleTime: 24 * 60 * 60 * 1000, //24h
+    retry: 0,
   });
 
 export default useGames;
