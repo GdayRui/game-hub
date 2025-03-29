@@ -14,13 +14,10 @@ export interface GameQuery {
   platform: Platform | null;
   sortOrder: string;
   searchText: string;
-  page: number;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({
-    page: 1,
-  } as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <Grid
@@ -65,25 +62,6 @@ function App() {
           />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
-        <HStack spacing={3} marginTop={5}>
-          <Button
-            disabled={gameQuery.page === 1}
-            onClick={() =>
-              setGameQuery({ ...gameQuery, page: gameQuery.page - 1 })
-            }
-            colorScheme="blue"
-          >
-            Pre
-          </Button>
-          <Button
-            onClick={() =>
-              setGameQuery({ ...gameQuery, page: gameQuery.page + 1 })
-            }
-            colorScheme="blue"
-          >
-            Next
-          </Button>
-        </HStack>
       </GridItem>
     </Grid>
   );
