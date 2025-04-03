@@ -4,9 +4,12 @@ import usePlatform from "../hooks/usePlatform";
 import useGameQueryStore from "../store/gameQueryStore";
 
 const GameHeading = () => {
-  const { gameQuery } = useGameQueryStore();
-  const platform = usePlatform(gameQuery.platformId);
-  const genre = useGenre(gameQuery.genreId);
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const genre = useGenre(genreId);
+
+  const platformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const platform = usePlatform(platformId);
+
   const headingText = `${platform?.name || ""} ${genre?.name || ""} Games`;
   return <Heading fontSize="5xl">{headingText}</Heading>;
 };

@@ -12,7 +12,8 @@ import getCroppedImageUrl from "../services/image-url";
 import useGameQueryStore from "../store/gameQueryStore";
 
 const GenresList = () => {
-  const { gameQuery, setGenreId } = useGameQueryStore();
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -36,7 +37,7 @@ const GenresList = () => {
                 fontSize="xl"
                 whiteSpace="normal"
                 textAlign="left"
-                fontWeight={genre.id === gameQuery.genreId ? "bold" : "normal"}
+                fontWeight={genre.id === genreId ? "bold" : "normal"}
               >
                 {genre.name}
               </Button>
